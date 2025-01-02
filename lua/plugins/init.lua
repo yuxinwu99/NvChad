@@ -53,7 +53,34 @@ return {
       enable_close_on_slash = true,
     },
     config = function()
-        require('nvim-ts-autotag').setup()
+      require('nvim-ts-autotag').setup()
     end,
-  }
+  },
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional
+    },
+    config = function()
+      require('tailwind-tools').setup()
+    end,
+  },
+  {
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
+    opts = function ()
+      return require "configs.null-ls"
+    end
+  },
+
+  -- {
+  --   "MunifTanjim/prettier.nvim",
+  --   config = function()
+  --     -- Configuration handled above within null-ls
+  --   end,
+  -- },
 }
